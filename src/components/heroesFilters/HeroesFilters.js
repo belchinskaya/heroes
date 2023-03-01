@@ -6,12 +6,6 @@ import store from '../../store';
 
 import { filterChanged, fetchFilters, selectAll} from './filtersSlice';
 import Spinner from '../spinner/Spinner';
-// Задача для этого компонента:
-// Фильтры должны формироваться на основании загруженных данных
-// Фильтры должны отображать только нужных героев при выборе
-// Активный фильтр имеет класс active
-// Изменять json-файл для удобства МОЖНО!
-// Представьте, что вы попросили бэкенд-разработчика об этом
 
 const HeroesFilters = () => {
 
@@ -23,6 +17,7 @@ const HeroesFilters = () => {
     // Запрос на сервер для получения фильтров и последовательной смены состояния
     useEffect(() => {
         dispatch(fetchFilters(request));
+        // eslint-disable-next-line
     }, []);
 
     if (filtersLoadingStatus === "loading") {
