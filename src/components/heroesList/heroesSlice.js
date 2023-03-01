@@ -15,7 +15,10 @@ export const fetchHeroes = createAsyncThunk(
     'heroes/fetchHeroes',
     ( ) => {
         const {request} = useHttp();
-        return  request("http://localhost:3001/heroes")
+        // return  request("http://localhost:3001/heroes")
+
+        //make request for netlify deploying from glitch
+        return  request("https://grateful-respected-magician.glitch.me/heroes")
     }
 )
 
