@@ -1,5 +1,3 @@
-
-
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
 // в общее состояние и отображаться в списке + фильтроваться
@@ -43,8 +41,10 @@ const HeroesAddForm = () => {
 
         // Отправляем данные на сервер в формате JSON
         // ТОЛЬКО если запрос успешен - отправляем персонажа в store
-        request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
-            .then(res => console.log(res, 'Отправка успешна'))
+
+        // request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
+        request("https://grateful-respected-magician.glitch.me/heroes", "POST", JSON.stringify(newHero))
+            .then(res => console.log(res, 'Sucsess'))
             .then(dispatch(heroCreated(newHero)))
             .catch(err => console.log(err));
 
@@ -56,9 +56,9 @@ const HeroesAddForm = () => {
 
     const renderFilters = (filters, status) => {
         if (status === "loading") {
-            return <option>Загрузка элементов</option>
+            return <option>Loading</option>
         } else if (status === "error") {
-            return <option>Ошибка загрузки</option>
+            return <option>Loading error</option>
         }
         
         // Если фильтры есть, то рендерим их
@@ -76,33 +76,33 @@ const HeroesAddForm = () => {
     return (
         <form className="border p-4 shadow-lg rounded" onSubmit={onSubmitHandler}>
             <div className="mb-3">
-                <label htmlFor="name" className="form-label fs-4">Имя нового героя</label>
+                <label htmlFor="name" className="form-label fs-4">New hero name</label>
                 <input 
                     required
                     type="text" 
                     name="name" 
                     className="form-control" 
                     id="name" 
-                    placeholder="Как меня зовут?"
+                    placeholder="What is my name?"
                     value={heroName}
                     onChange={(e) => setHeroName(e.target.value)}/>
             </div>
 
             <div className="mb-3">
-                <label htmlFor="text" className="form-label fs-4">Описание</label>
+                <label htmlFor="text" className="form-label fs-4">Description</label>
                 <textarea
                     required
                     name="text" 
                     className="form-control" 
                     id="text" 
-                    placeholder="Что я умею?"
+                    placeholder="What can I do?"
                     style={{"height": '130px'}}
                     value={heroDescr}
                     onChange={(e) => setHeroDescr(e.target.value)} />
             </div>
 
             <div className="mb-3">
-                <label htmlFor="element" className="form-label">Выбрать элемент героя</label>
+                <label htmlFor="element" className="form-label">Choose element for hero</label>
                 <select 
                     required
                     className="form-select" 
@@ -110,12 +110,12 @@ const HeroesAddForm = () => {
                     name="element"
                     value={heroElement}
                     onChange={(e) => setHeroElement(e.target.value)}>
-                    <option value="">Я владею элементом...</option>
+                    <option value="">I own an element...</option>
                     {renderFilters(filters, filtersLoadingStatus)}
                 </select>
             </div>
 
-            <button type="submit" className="btn btn-primary">Создать</button>
+            <button type="submit" className="btn btn-primary">Create</button>
         </form>
     )
 }
