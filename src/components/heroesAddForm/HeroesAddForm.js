@@ -43,7 +43,7 @@ const HeroesAddForm = () => {
         // ТОЛЬКО если запрос успешен - отправляем персонажа в store
 
         // request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
-        request("https://grateful-respected-magician.glitch.me/heroes", "POST", JSON.stringify(newHero))
+        request("https://my-json-server.typicode.com/kbelchynska/db-json/heroes", "POST", JSON.stringify(newHero))
             .then(res => console.log(res, 'Sucsess'))
             .then(dispatch(heroCreated(newHero)))
             .catch(err => console.log(err));
