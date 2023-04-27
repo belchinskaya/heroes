@@ -18,7 +18,7 @@ export const fetchHeroes = createAsyncThunk(
         // return  request("http://localhost:3001/heroes")
 
         //make request for netlify deploying from glitch
-        return  request("https://grateful-respected-magician.glitch.me/heroes")
+        return  request("https://my-json-server.typicode.com/kbelchynska/db-json/heroes")
     }
 )
 
