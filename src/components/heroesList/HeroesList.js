@@ -24,7 +24,7 @@ const HeroesList = () => {
 
     const onDelete = useCallback((id) => {
         // request(`http://localhost:3001/heroes/${id}`, "DELETE")
-        request(`https://grateful-respected-magician.glitch.me/heroes/${id}`, "DELETE")
+        request(`https://my-json-server.typicode.com/kbelchynska/db-json/heroes/${id}`, "DELETE")
             .then(data => console.log(data, 'Deleted'))
             .then(dispatch(heroDeleted(id)))
             .catch(err => console.log(err));
